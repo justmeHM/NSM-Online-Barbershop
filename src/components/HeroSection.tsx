@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+// Create a motion-enhanced Link component
+const MotionLink = motion(Link);
+
 export default function HeroSection() {
   return (
     <section className="min-h-screen bg-gradient-to-tr from-black via-gray-900 to-black relative overflow-hidden flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-12 text-white font-serif">
@@ -36,15 +39,14 @@ export default function HeroSection() {
           Experience premium grooming that redefines your style — book your transformation today, at the shop or at home.
         </p>
 
-        <Link href="/book" passHref>
-          <motion.a
-            whileHover={{ scale: 1.05, boxShadow: "0 0 15px 3px rgb(218 165 32 / 0.7)" }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block px-8 py-4 border-2 border-yellow-500 text-yellow-400 font-semibold rounded-lg tracking-wide transition-shadow"
-          >
-            Book Now
-          </motion.a>
-        </Link>
+        <MotionLink
+          href="/book"
+          className="inline-block px-8 py-4 border-2 border-yellow-500 text-yellow-400 font-semibold rounded-lg tracking-wide transition-shadow"
+          whileHover={{ scale: 1.05, boxShadow: "0 0 15px 3px rgb(218 165 32 / 0.7)" }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Book Now
+        </MotionLink>
       </motion.div>
 
       {/* Right Image */}
@@ -55,7 +57,7 @@ export default function HeroSection() {
         transition={{ duration: 1.1, ease: "easeOut" }}
       >
         <Image
-          src="/images/img1.jpg" // Replace with your best high-quality haircut image
+          src="/images/img1.jpg"
           alt="Elite haircut"
           width={450}
           height={500}
