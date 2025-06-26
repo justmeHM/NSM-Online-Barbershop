@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 const services = [
@@ -27,6 +28,12 @@ const services = [
 ];
 
 export default function ServicesPage() {
+  const router = useRouter();
+
+  const handleBookNow = (serviceId: string) => {
+    router.push(`/book?service=${serviceId}`);
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12 bg-black text-yellow-400 rounded-lg shadow-lg">
       <h1 className="text-4xl font-extrabold text-center mb-10 drop-shadow-lg">
@@ -51,9 +58,11 @@ export default function ServicesPage() {
                 </p>
               </div>
             </div>
+
             <Button
               className="w-full text-black bg-yellow-400 hover:bg-yellow-500 font-semibold shadow-md"
               size="sm"
+              onClick={() => handleBookNow(service.id)}
             >
               Book Now
             </Button>
