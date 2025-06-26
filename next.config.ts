@@ -1,7 +1,12 @@
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+  },
+  clerkMiddleware: {
+    isSrcDir: true, // ✅ tell Clerk you ARE using src
+  },
 };
 
 export default nextConfig;
