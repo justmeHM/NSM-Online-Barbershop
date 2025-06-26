@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
 const services = [
@@ -59,13 +60,27 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <Button
-              className="w-full text-black bg-yellow-400 hover:bg-yellow-500 font-semibold shadow-md"
-              size="sm"
-              onClick={() => handleBookNow(service.id)}
-            >
-              Book Now
-            </Button>
+            <div>
+              <SignedIn>
+                <Button
+                  onClick={() => handleBookNow(service.id)}
+                  className="w-full text-black bg-yellow-400 hover:bg-yellow-500 font-semibold shadow-md"
+                  size="sm"
+                >
+                  Book Now
+                </Button>
+              </SignedIn>
+
+              <SignedOut>
+                <Button
+                  disabled
+                  className="w-full text-black bg-yellow-400 opacity-50 cursor-not-allowed font-semibold shadow-md"
+                  size="sm"
+                >
+                  Sign in to Book
+                </Button>
+              </SignedOut>
+            </div>
           </div>
         ))}
       </div>
