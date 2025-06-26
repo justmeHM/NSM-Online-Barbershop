@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
-
+import BackButton from "@/components/BackButton";
 type Booking = {
   id: string;
   service: string;
@@ -77,6 +77,11 @@ export default function MyBookingsPage() {
           ))}
         </ul>
       )}
+     <div className= 'text-center justify-center mt-6'>
+             <BackButton />
+           </div>
+            
     </div>
   );
+  
 }

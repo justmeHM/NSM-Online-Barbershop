@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-
+import BackButton from "@/components/BackButton";
 export default function BookPage() {
   const [form, setForm] = useState({
     service: "",
@@ -86,6 +86,13 @@ export default function BookPage() {
           Submit Booking
         </button>
       </form>
+      
+      <div className= 'text-center justify-center mt-6'>
+        <BackButton />
+      </div>
+       
     </div>
+    
+
   );
 }

@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle, // ✅ import this
+} from "@/components/ui/sheet";
 import { Menu, LinkIcon, MapPinIcon, LogOut } from "lucide-react";
 import Link from "next/link";
 import {
@@ -36,6 +41,11 @@ export function MobileSidebar() {
         side="left"
         className="flex flex-col p-6 space-y-6 bg-black text-yellow-400 min-w-[250px] shadow-xl shadow-yellow-900/40"
       >
+        {/* ✅ Required for accessibility */}
+        <SheetTitle className="text-lg font-bold text-yellow-400">
+          NSM Elite Looks Menu
+        </SheetTitle>
+
         {/* Navigation Links */}
         <nav className="flex flex-col gap-6 text-lg font-medium">
           <Link href="/" onClick={() => setIsOpen(false)} className="hover:text-yellow-300 transition">Home</Link>
@@ -46,9 +56,6 @@ export function MobileSidebar() {
 
         <Separator className="my-4 border-yellow-600" />
 
-       
-
-        {/* Signed In Profile */}
         <SignedIn>
           {user && (
             <div className="flex flex-col items-center text-center mt-4 space-y-2">
@@ -62,7 +69,7 @@ export function MobileSidebar() {
 
               <div>
                 <h3 className="font-semibold">{user.fullName}</h3>
-                <p className="text-sm text-yellow-500">{user.username || `You're Signed In `}</p>
+                <p className="text-sm text-yellow-500">{user.username || `You're Signed In`}</p>
               </div>
 
               <div className="flex flex-col text-sm mt-2 space-y-1">
@@ -106,7 +113,6 @@ export function MobileSidebar() {
           )}
         </SignedIn>
 
-        {/* Signed Out Buttons */}
         <SignedOut>
           <div className="space-y-3">
             <SignInButton mode="modal">
